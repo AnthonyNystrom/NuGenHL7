@@ -1,0 +1,240 @@
+using System;
+using Genetibase.NuGenHL7.model;
+using Genetibase.NuGenHL7.model.v231.datatype;
+using ModelClassFactory = Genetibase.NuGenHL7.parser.NuGenModelClassFactory;
+using HL7Exception = Genetibase.NuGenHL7.NuGenHL7Exception;
+namespace Genetibase.NuGenHL7.model.v231.segment
+{
+	
+	/// <summary> <p>Represents an HL7 APR message segment. 
+	/// This segment has the following fields:</p><p>
+	/// APR-1: Time Selection Criteria (SCV)<br> 
+	/// APR-2: Resource Selection Criteria (SCV)<br> 
+	/// APR-3: Location Selection Criteria (SCV)<br> 
+	/// APR-4: Slot Spacing Criteria (NM)<br> 
+	/// APR-5: Filler Override Criteria (SCV)<br> 
+	/// </p><p>The get...() methods return data from individual fields.  These methods 
+	/// do not throw exceptions and may therefore have to handle exceptions internally.  
+	/// If an exception is handled internally, it is logged and null is returned.  
+	/// This is not expected to happen - if it does happen this indicates not so much 
+	/// an exceptional circumstance as a bug in the code for this class.</p>    
+	/// </summary>
+	[Serializable]
+	public class APR:AbstractSegment
+	{
+		/// <summary> Returns Slot Spacing Criteria (APR-4).</summary>
+		virtual public NM SlotSpacingCriteria
+		{
+			get
+			{
+				NM ret = null;
+				try
+				{
+					Type t = this.getField(4, 0);
+					ret = (NM) t;
+				}
+				catch (System.InvalidCastException )
+				{
+					throw new Exception();
+				}
+				catch (NuGenHL7Exception)
+				{
+					throw new Exception();
+				}
+				return ret;
+			}
+			
+		}
+		
+		/// <summary> Creates a APR (APR - appointment preferences segment) segment object that belongs to the given 
+		/// message.  
+		/// </summary>
+		public APR(Group parent, ModelClassFactory factory):base(parent, factory)
+		{
+			Message message = Message;
+			try
+			{
+				this.add(typeof(SCV), false, 0, 80, new System.Object[]{message});
+				this.add(typeof(SCV), false, 0, 80, new System.Object[]{message});
+				this.add(typeof(SCV), false, 0, 80, new System.Object[]{message});
+				this.add(typeof(NM), false, 1, 5, new System.Object[]{message});
+				this.add(typeof(SCV), false, 0, 80, new System.Object[]{message});
+			}
+			catch (NuGenHL7Exception)
+			{
+			}
+		}
+		
+		/// <summary> Returns a single repetition of Time Selection Criteria (APR-1).</summary>
+		/// <param name="rep">the repetition number (this is a repeating field)
+		/// </param>
+		/// <throws>  HL7Exception if the repetition number is invalid. </throws>
+		public virtual SCV getTimeSelectionCriteria(int rep)
+		{
+			SCV ret = null;
+			try
+			{
+				Type t = this.getField(1, rep);
+				ret = (SCV) t;
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+		
+		/// <summary> Returns all repetitions of Time Selection Criteria (APR-1).</summary>
+		public virtual SCV[] getTimeSelectionCriteria()
+		{
+			SCV[] ret = null;
+			try
+			{
+				Type[] t = this.getField(1);
+				ret = new SCV[t.Length];
+				for (int i = 0; i < ret.Length; i++)
+				{
+					ret[i] = (SCV) t[i];
+				}
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			catch (NuGenHL7Exception)
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+		
+		/// <summary> Returns a single repetition of Resource Selection Criteria (APR-2).</summary>
+		/// <param name="rep">the repetition number (this is a repeating field)
+		/// </param>
+		/// <throws>  HL7Exception if the repetition number is invalid. </throws>
+		public virtual SCV getResourceSelectionCriteria(int rep)
+		{
+			SCV ret = null;
+			try
+			{
+				Type t = this.getField(2, rep);
+				ret = (SCV) t;
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+		
+		/// <summary> Returns all repetitions of Resource Selection Criteria (APR-2).</summary>
+		public virtual SCV[] getResourceSelectionCriteria()
+		{
+			SCV[] ret = null;
+			try
+			{
+				Type[] t = this.getField(2);
+				ret = new SCV[t.Length];
+				for (int i = 0; i < ret.Length; i++)
+				{
+					ret[i] = (SCV) t[i];
+				}
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			catch (NuGenHL7Exception)
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+		
+		/// <summary> Returns a single repetition of Location Selection Criteria (APR-3).</summary>
+		/// <param name="rep">the repetition number (this is a repeating field)
+		/// </param>
+		/// <throws>  HL7Exception if the repetition number is invalid. </throws>
+		public virtual SCV getLocationSelectionCriteria(int rep)
+		{
+			SCV ret = null;
+			try
+			{
+				Type t = this.getField(3, rep);
+				ret = (SCV) t;
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+		
+		/// <summary> Returns all repetitions of Location Selection Criteria (APR-3).</summary>
+		public virtual SCV[] getLocationSelectionCriteria()
+		{
+			SCV[] ret = null;
+			try
+			{
+				Type[] t = this.getField(3);
+				ret = new SCV[t.Length];
+				for (int i = 0; i < ret.Length; i++)
+				{
+					ret[i] = (SCV) t[i];
+				}
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			catch (NuGenHL7Exception)
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+		
+		/// <summary> Returns a single repetition of Filler Override Criteria (APR-5).</summary>
+		/// <param name="rep">the repetition number (this is a repeating field)
+		/// </param>
+		/// <throws>  HL7Exception if the repetition number is invalid. </throws>
+		public virtual SCV getFillerOverrideCriteria(int rep)
+		{
+			SCV ret = null;
+			try
+			{
+				Type t = this.getField(5, rep);
+				ret = (SCV) t;
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+		
+		/// <summary> Returns all repetitions of Filler Override Criteria (APR-5).</summary>
+		public virtual SCV[] getFillerOverrideCriteria()
+		{
+			SCV[] ret = null;
+			try
+			{
+				Type[] t = this.getField(5);
+				ret = new SCV[t.Length];
+				for (int i = 0; i < ret.Length; i++)
+				{
+					ret[i] = (SCV) t[i];
+				}
+			}
+			catch (System.InvalidCastException )
+			{
+				throw new Exception();
+			}
+			catch (NuGenHL7Exception)
+			{
+				throw new Exception();
+			}
+			return ret;
+		}
+	}
+}
